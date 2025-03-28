@@ -1,47 +1,60 @@
 body {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column; /* 讓 Canvas 和按鈕垂直排列 */
+    display: flex; /* Use flex to center canvas */
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #333;
-    overflow: hidden; /* 防止滾動條出現 */
-    touch-action: manipulation; /* 禁用雙擊縮放等觸控手勢 */
+    width: 100vw; /* Ensure body takes full viewport width */
+    background-color: #000; /* Darker background */
+    overflow: hidden;
+    touch-action: manipulation;
+    position: relative; /* Needed for absolute positioning of start screen */
 }
 
-canvas {
-    border: 1px solid black;
-    background-color: #eee; /* 預設背景色，會被圖片覆蓋 */
-    max-width: 100%; /* 確保畫布不超出螢幕寬度 */
-    /* 可以設定固定寬高，或根據視窗調整 */
-    /* width: 800px; */
-    /* height: 400px; */
-}
-
-.controls {
-    margin-top: 10px;
+#startScreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
-    gap: 10px; /* 按鈕間距 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; /* Make sure it's on top */
+    color: white;
+    text-align: center;
 }
 
-.controls button {
-    padding: 15px 25px; /* 增加按鈕大小方便觸控 */
-    font-size: 1.2em;
-    cursor: pointer;
-    user-select: none; /* 防止選中文本 */
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE/Edge */
+#startButton {
+    padding: 20px 40px;
+    font-size: 1.5em;
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 15px;
 }
 
-.controls button:active {
-    background-color: #45a049;
+#startButton:hover {
+     background-color: #45a049;
+}
+
+#loadingText {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+
+canvas {
+    border: 1px solid black;
+    background-color: #eee;
+    display: block; /* Make canvas a block element */
+    /* max-width/max-height will be handled by resizeCanvas */
+    /* remove fixed width/height if previously set */
 }
 
 /* 隱藏音效控制元件 */
