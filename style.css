@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* 讓 Canvas 和按鈕垂直排列 */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+    overflow: hidden; /* 防止滾動條出現 */
+    touch-action: manipulation; /* 禁用雙擊縮放等觸控手勢 */
+}
+
+canvas {
+    border: 1px solid black;
+    background-color: #eee; /* 預設背景色，會被圖片覆蓋 */
+    max-width: 100%; /* 確保畫布不超出螢幕寬度 */
+    /* 可以設定固定寬高，或根據視窗調整 */
+    /* width: 800px; */
+    /* height: 400px; */
+}
+
+.controls {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px; /* 按鈕間距 */
+}
+
+.controls button {
+    padding: 15px 25px; /* 增加按鈕大小方便觸控 */
+    font-size: 1.2em;
+    cursor: pointer;
+    user-select: none; /* 防止選中文本 */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.controls button:active {
+    background-color: #45a049;
+}
+
+/* 隱藏音效控制元件 */
+audio {
+    display: none;
+}
